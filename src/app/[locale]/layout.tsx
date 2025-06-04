@@ -1,17 +1,19 @@
 import { getLangDir } from "rtl-detect";
-import "./globals.css";
+import "../globals.css";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import TopNav from "@/components/TopNav";
 
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   const t = await getTranslations({
-    locale: params.locale, 
+    locale,
     namespace: "metadata",
   });
 
@@ -30,12 +32,13 @@ export default async function LocaleLayout({
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }>) {
-  const { locale } = params;
+  const { locale } = await params;
   const direction = getLangDir(locale);
 
-  if (!hasLocale(routing.locales, locale)) {
+  const isSupportedLocale = hasLocale(routing.locales, locale);
+  if (!isSupportedLocale) {
     notFound();
   }
 
@@ -43,8 +46,11 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={direction}>
-      <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+      <body className="min-h-screen">
+        <NextIntlClientProvider>
+          <TopNav />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

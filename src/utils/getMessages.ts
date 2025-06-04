@@ -1,0 +1,20 @@
+import { TranslationMessages } from "@/types/messages";
+
+const namespaces = ["common", "metadata"] as const;
+
+type Namespace = (typeof namespaces)[number];
+
+type Messages = Record<Namespace, TranslationMessages>;
+
+const getMessages = async (locale: string): Promise<Messages> => {
+  const messages = await Promise.all(
+    namespaces.map(async (ns) => {
+      const module = await import(`../../messages/${locale}/${ns}.json`);
+      return [ns, module.default] as const;
+    })
+  );
+
+  return Object.fromEntries(messages) as Messages;
+};
+
+export default getMessages;
