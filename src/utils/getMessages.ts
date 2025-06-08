@@ -1,6 +1,6 @@
 import { TranslationMessages } from "@/types/messages";
 
-const namespaces = ["common", "metadata"] as const;
+const namespaces = ["common", "header", "homepage", "metadata"] as const;
 
 type Namespace = (typeof namespaces)[number];
 

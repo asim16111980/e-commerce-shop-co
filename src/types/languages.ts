@@ -1,7 +1,3 @@
+import { LANGUAGE_LABELS } from "@/constants/locales";
 
-const langsCode = {
-    ar: "eg",
-    en: "gb",
-  } as const;
-  
- export type Locale = keyof typeof langsCode;
+ export type Locale = keyof typeof LANGUAGE_LABELS;
