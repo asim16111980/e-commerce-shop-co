@@ -51,7 +51,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <TopNav />
           <Header />
-          {children}
+          {children} 
         </NextIntlClientProvider>
       </body>
     </html>
