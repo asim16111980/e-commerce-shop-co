@@ -8,7 +8,7 @@ const NavMenu = () => {
   const t = useTranslations("header");
   return (
     <div className="w-screen h-screen bg-black bg-opacity-35 absolute top-0 start-0 z-50">
-      <div className="w-11/12 h-full bg-white p-6 flex flex-col items-start/">
+      <div className="w-11/12 h-full bg-white p-6 flex flex-col">
         <div className="flex flex-col items-start gap-4">
           <div className="w-full flex items-center justify-between">
             <h1 className="text-base font-medium text-black uppercase">
@@ -17,12 +17,14 @@ const NavMenu = () => {
             <X className="text-gray-500" />
           </div>
           <SearchBox />
-          <nav className="flex gap-4">
-            <ul>
+          <nav className="w-full flex flex-col justify-between">
+            <ul className="flex flex-col gap-4">
               {navLinks.map((navLink) => (
-                <Link key={navLink.link} href={navLink.href}>
-                  {t(`navLabels.${[navLink.link]}`)}
-                </Link>
+                <li key={navLink.link} className="w-full h-10 border-b border-b-gray-200 transition duration-200 hover:bg-gray-100">
+                  <Link  href={navLink.href} className="text-gray-900 text-sm font-medium">
+                    {t(`navLabels.${navLink.link}`)}
+                  </Link>
+                </li>
               ))}
             </ul>
           </nav>
