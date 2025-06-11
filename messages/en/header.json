@@ -1,3 +1,8 @@
 {
-    "title":"shop.co"
+    "title":"infinity", "navLabels": {
+    "home": "Home",
+    "shop": "Shop",
+    "product": "Product",
+    "contactus": "Contact Us"
+  }
 }
