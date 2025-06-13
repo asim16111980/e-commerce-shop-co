@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence } from "motion/react";
 import { CircleUser, Menu, Search, ShoppingCart } from "lucide-react";
 import LangSwitcher from "./LangSwitcher";
 import { useTranslations } from "next-intl";
@@ -19,7 +20,8 @@ const Header = () => {
       >
         <Menu />
       </button>
-      {isOpen && <FlyMenu onClose={() => setIsOpen(false)} />}
+      <AnimatePresence>
+      {isOpen && <FlyMenu onClose={() => setIsOpen(false)} />}</AnimatePresence>
       {/* <h1 className="flex-1 text-2xl font-bold uppercase">{t("title")}</h1>
       <Search />
       <ShoppingCart />
