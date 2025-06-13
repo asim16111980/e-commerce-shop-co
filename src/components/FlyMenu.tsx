@@ -43,13 +43,29 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
                   key={navLink.link}
                   className="relative w-full h-10 border-b border-b-gray-200 group cursor-pointer"
                 >
-                  <span className="absolute inset-0 origin-left scale-x-0 h-full group-hover:scale-x-100 border-b shadow-sm border-b-blue-600 transition duration-300"></span>
+                  <span className="absolute inset-0 origin-left scale-x-0 h-full group-hover:scale-x-100 border-b border-b-blue-600 transition duration-300"></span>
                   <Link
                     href={navLink.href}
-                    className="absolute inset-0 size-full flex items-center text-gray-900 text-sm font-medium origin-left group-hover:text-blue-600 group-hover:font-bold transition duration-300"
+                     onClick={onClose}
+                    className="absolute inset-0 size-full flex items-center text-gray-900 text-sm font-medium origin-left group-hover:text-blue-600 group-hover:font-bold shadow-sm transition duration-300"
                   >
                     {t(`navLabels.${navLink.link}`)}
-                  </Link>
+                  </Link>{'nested' in navLink && <ChevronDown
+                className={clsx(
+                  "size-4 transition-transform duration-200",
+                  open && "rotate-180"
+                )}
+              />}
+                  {'nested' in navLink && navLink.nested?.length && navLink.nested.map((nestedLink) => (
+                    <Link
+                      key={nestedLink.link}
+                      href={nestedLink.href}
+                      onClick={onClose}
+                      className="absolute inset-0 size-full flex items-center text-gray-600 text-sm font-normal origin-left group-hover:text-blue-500 group-hover:font-semibold transition duration-300"
+                    >
+                      {t(`navLabels.${nestedLink.link}`)}
+                    </Link>
+                  ))}
                 </li>
               ))}
             </ul>

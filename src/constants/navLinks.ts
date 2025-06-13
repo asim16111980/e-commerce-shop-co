@@ -6,12 +6,12 @@ export const navLinks = [
   {
     link: "shop",
     href: "/shop",
-    nested: [],
+    nested: [{ link: '', href: '' }],
   },
   {
     link: "product",
     href: "/product",
-    nested: [],
+    nested: [{ link: '', href: '' }],
   },
   {
     link: "contactus",
