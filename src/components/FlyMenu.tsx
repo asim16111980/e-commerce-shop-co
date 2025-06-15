@@ -1,14 +1,17 @@
 "use client";
 
 import { motion } from "motion/react";
-import { X } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import SearchBox from "./SearchBox";
 import { useTranslations } from "next-intl";
 import { navLinks } from "@/constants/navLinks";
 import { Link } from "@/i18n/navigation";
+import clsx from "clsx";
+import { useState } from "react";
 
 const NavMenu = ({ onClose }: { onClose: () => void }) => {
   const t = useTranslations("header");
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <motion.div
@@ -41,22 +44,30 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
               {navLinks.map((navLink) => (
                 <li
                   key={navLink.link}
-                  className="relative w-full h-10 border-b border-b-gray-200 group cursor-pointer"
+                  className="relative w-full h-10 flex items-center justify-between border-b border-b-gray-200 group cursor-pointer"
                 >
-                  <span className="absolute inset-0 origin-left scale-x-0 h-full group-hover:scale-x-100 border-b border-b-blue-600 transition duration-300"></span>
+                  <span className="absolute inset-0 -z-10  origin-left scale-x-0 h-full group-hover:scale-x-100 border-b border-b-blue-600 transition duration-300"></span>
                   <Link
                     href={navLink.href}
-                     onClick={onClose}
-                    className="absolute inset-0 size-full flex items-center text-gray-900 text-sm font-medium origin-left group-hover:text-blue-600 group-hover:font-bold shadow-sm transition duration-300"
+                    onClick={onClose}
+                    className="size-full flex items-center text-gray-900 text-sm font-medium origin-left group-hover:text-blue-600 group-hover:font-bold shadow-sm transition duration-300"
                   >
                     {t(`navLabels.${navLink.link}`)}
-                  </Link>{'nested' in navLink && <ChevronDown
-                className={clsx(
-                  "size-4 transition-transform duration-200",
-                  open && "rotate-180"
-                )}
-              />}
-                  {'nested' in navLink && navLink.nested?.length && navLink.nested.map((nestedLink) => (
+                  </Link>
+                  {"nested" in navLink && (
+                    <button
+                      className="size-6 flex items-center justify-center"
+                      onClick={() => setIsOpen((val) => !val)}
+                    >
+                      <ChevronDown
+                        className={clsx(
+                          "size-4 transition-transform duration-200",
+                          isOpen && "rotate-180"
+                        )}
+                      />
+                    </button>
+                  )}
+                  {/* {'nested' in navLink && navLink.nested?.length && navLink.nested.map((nestedLink) => (
                     <Link
                       key={nestedLink.link}
                       href={nestedLink.href}
@@ -65,7 +76,7 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
                     >
                       {t(`navLabels.${nestedLink.link}`)}
                     </Link>
-                  ))}
+                  ))} */}
                 </li>
               ))}
             </ul>
