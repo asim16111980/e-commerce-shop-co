@@ -4,14 +4,19 @@ import { motion } from "motion/react";
 import { ChevronDown, X } from "lucide-react";
 import SearchBox from "./SearchBox";
 import { useTranslations } from "next-intl";
-import { navLinks } from "@/constants/navLinks";
+import { COMMON_LINKS, USER_LINKS } from "@/constants/navLinks";
 import { Link } from "@/i18n/navigation";
 import clsx from "clsx";
 import { useState } from "react";
+import HoverUnderline from "./HoverUnderline ";
+import { ICONS } from "@/constants/icons";
 
 const NavMenu = ({ onClose }: { onClose: () => void }) => {
   const t = useTranslations("header");
-  const [isOpen, setIsOpen] = useState(false);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const liClass =
+    "relative w-full h-10 flex items-center justify-between border-b border-b-gray-200 group cursor-pointer";
+  const transitionClass = "transition duration-300 ease-in-out";
 
   return (
     <motion.div
@@ -38,45 +43,81 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
               <X className="text-gray-500" />
             </button>
           </div>
+          {/* Search box */}
           <SearchBox />
           <nav className="w-full flex flex-col justify-between">
+            {/* Common Links */}
             <ul className="flex flex-col gap-4">
-              {navLinks.map((navLink) => (
-                <li
-                  key={navLink.link}
-                  className="relative w-full h-10 flex items-center justify-between border-b border-b-gray-200 group cursor-pointer"
-                >
-                  <span className="absolute inset-0 -z-10  origin-left scale-x-0 h-full group-hover:scale-x-100 border-b border-b-blue-600 transition duration-300"></span>
-                  <Link
-                    href={navLink.href}
-                    onClick={onClose}
-                    className="size-full flex items-center text-gray-900 text-sm font-medium origin-left group-hover:text-blue-600 group-hover:font-bold shadow-sm transition duration-300"
-                  >
-                    {t(`navLabels.${navLink.link}`)}
-                  </Link>
-                  {"nested" in navLink && (
-                    <button
-                      className="size-6 flex items-center justify-center"
-                      onClick={() => setIsOpen((val) => !val)}
-                    >
-                      <ChevronDown
+              {COMMON_LINKS.map((navLink, index) => {
+                if ("href" in navLink) {
+                  return (
+                    <li key={navLink.link} className={liClass}>
+                      <HoverUnderline />
+                      <Link
+                        href={navLink.href}
+                        onClick={onClose}
                         className={clsx(
-                          "size-4 transition-transform duration-200",
-                          isOpen && "rotate-180"
+                          "absolute inset-0 size-full flex items-center text-gray-900 text-sm font-medium origin-left group-hover:text-blue-600 group-hover:font-bold",
+                          transitionClass
                         )}
-                      />
-                    </button>
-                  )}
-                  {/* {'nested' in navLink && navLink.nested?.length && navLink.nested.map((nestedLink) => (
+                      >
+                        {t(`navLabels.${navLink.link}`)}
+                      </Link>
+                    </li>
+                  );
+                } else if ("nested" in navLink) {
+                  return (
+                    <li key={navLink.link} className={liClass}>
+                      <HoverUnderline />
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setOpenIndex(openIndex === index ? null : index)
+                        }
+                        className={clsx(
+                          "absolute inset-0 size-full flex items-center justify-between text-gray-900 text-sm font-medium origin-left group-hover:text-blue-600 group-hover:font-bold",
+                          transitionClass
+                        )}
+                      >
+                        <span>{t(`navLabels.${navLink.link}`)}</span>
+                        <span
+                          aria-expanded={openIndex === index}
+                          className="size-6 flex items-center justify-center"
+                        >
+                          <ChevronDown
+                            className={clsx(
+                              "size-4",
+                              transitionClass,
+                              openIndex === index && "rotate-180"
+                            )}
+                          />
+                        </span>
+                      </button>
+                    </li>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </ul>
+            {/* User Links */}
+            <ul>
+              {USER_LINKS.map((navLink) => (
+                <li key={navLink.link} className={liClass}>
+                  <HoverUnderline />
+                  <span>
                     <Link
-                      key={nestedLink.link}
-                      href={nestedLink.href}
+                      href={navLink.href}
                       onClick={onClose}
-                      className="absolute inset-0 size-full flex items-center text-gray-600 text-sm font-normal origin-left group-hover:text-blue-500 group-hover:font-semibold transition duration-300"
+                      className={clsx(
+                        "absolute inset-0 size-full flex items-center text-gray-900 text-sm font-medium origin-left group-hover:text-blue-600 group-hover:font-bold",
+                        transitionClass
+                      )}
                     >
-                      {t(`navLabels.${nestedLink.link}`)}
+                      {t(`navLabels.${navLink.link}`)}
                     </Link>
-                  ))} */}
+                    <ICONS[/>
+                  </span>
                 </li>
               ))}
             </ul>

@@ -1,20 +1,22 @@
-export const navLinks = [
+const COMMON_LINKS = [
   {
     link: "home",
     href: "/",
   },
   {
     link: "shop",
-    href: "/shop",
-    nested: [{ link: '', href: '' }],
+    nested: [{ link: "", href: "" }],
   },
   {
     link: "product",
-    href: "/product",
-    nested: [{ link: '', href: '' }],
+    nested: [{ link: "", href: "" }],
   },
   {
     link: "contactus",
     href: "/contactus",
   },
 ] as const;
+
+const USER_LINKS = [{link:"cart",href:"/cart",icon:"ShoppingBag"},{link:"wishlist",href:"/wishlist",icon:"Heart"}] as const;
+
+export { COMMON_LINKS, USER_LINKS };
