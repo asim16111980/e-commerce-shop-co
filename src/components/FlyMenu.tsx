@@ -9,7 +9,7 @@ import { Link } from "@/i18n/navigation";
 import clsx from "clsx";
 import { useState } from "react";
 import HoverUnderline from "./HoverUnderline ";
-import { ICONS } from "@/constants/icons";
+import Icon from "./Icon";
 
 const NavMenu = ({ onClose }: { onClose: () => void }) => {
   const t = useTranslations("header");
@@ -49,9 +49,9 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
             {/* Common Links */}
             <ul className="flex flex-col gap-4">
               {COMMON_LINKS.map((navLink, index) => {
-                if ("href" in navLink) {
+                if ("href" in navLink && navLink.href) {
                   return (
-                    <li key={navLink.link} className={liClass}>
+                    <li key={navLink.label} className={liClass}>
                       <HoverUnderline />
                       <Link
                         href={navLink.href}
@@ -61,13 +61,13 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
                           transitionClass
                         )}
                       >
-                        {t(`navLabels.${navLink.link}`)}
+                        {t(`navLabels.${navLink.label}`)}
                       </Link>
                     </li>
                   );
-                } else if ("nested" in navLink) {
+                } else if ("nested" in navLink && navLink.nested) {
                   return (
-                    <li key={navLink.link} className={liClass}>
+                    <li key={navLink.label} className={liClass}>
                       <HoverUnderline />
                       <button
                         type="button"
@@ -79,7 +79,7 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
                           transitionClass
                         )}
                       >
-                        <span>{t(`navLabels.${navLink.link}`)}</span>
+                        <span>{t(`navLabels.${navLink.label}`)}</span>
                         <span
                           aria-expanded={openIndex === index}
                           className="size-6 flex items-center justify-center"
@@ -103,20 +103,23 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
             {/* User Links */}
             <ul>
               {USER_LINKS.map((navLink) => (
-                <li key={navLink.link} className={liClass}>
+                <li key={navLink.label} className={liClass}>
                   <HoverUnderline />
-                  <span>
+                  <span className="absolute inset-0 size-full flex items-center justify-between">
                     <Link
                       href={navLink.href}
                       onClick={onClose}
                       className={clsx(
-                        "absolute inset-0 size-full flex items-center text-gray-900 text-sm font-medium origin-left group-hover:text-blue-600 group-hover:font-bold",
+                        "size-full flex items-center text-gray-900 text-sm font-medium origin-left group-hover:text-blue-600 group-hover:font-bold",
                         transitionClass
                       )}
                     >
-                      {t(`navLabels.${navLink.link}`)}
+                      {t(`navLabels.${navLink.label}`)}
                     </Link>
-                    <ICONS[/>
+                    <Icon
+                      name={navLink.icon}
+                      className="size-4 ml-2 text-gray-500"
+                    />
                   </span>
                 </li>
               ))}

@@ -1,9 +1,10 @@
-import { ICONS, IconName } from "@/constants/icons";
+import { ICONS } from "@/constants/icons";
+import { IconRendererProps } from "@/types/icons";
 
 
-const IconRenderer = ({ name, className }: IconRendererProps) => {
+const Icon = ({ name, className }: IconRendererProps) => {
   const IconComponent = ICONS[name];
   return <IconComponent className={className} />;
 };
 
-export default IconRenderer;
+export default Icon;

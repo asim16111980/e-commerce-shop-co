@@ -4,6 +4,8 @@
     "home": "Home",
     "shop": "Shop",
     "product": "Product",
-    "contactus": "Contact Us"
+    "contactus": "Contact Us",
+    "cart": "Cart",
+    "wishlist": "Wishlist"
   }
 }
