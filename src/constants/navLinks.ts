@@ -20,8 +20,8 @@ const COMMON_LINKS: CommonLinks[] = [
     ],
   },
   {
-    label: "contactus",
-    href: "/contactus",
+    label: "contactUs",
+    href: "/contact-us",
   },
 ];
 

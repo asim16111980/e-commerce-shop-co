@@ -10,6 +10,7 @@ import clsx from "clsx";
 import { useState } from "react";
 import HoverUnderline from "./HoverUnderline ";
 import Icon from "./Icon";
+import SocialIcon from "./SocialIcon";
 
 const NavMenu = ({ onClose }: { onClose: () => void }) => {
   const t = useTranslations("header");
@@ -34,7 +35,7 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
         transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
         className="w-11/12 h-full bg-white p-6 flex flex-col"
       >
-        <div className="flex flex-col items-start gap-4">
+        <div className="flex flex-col h-full gap-4">
           <div className="w-full flex items-center justify-between">
             <h1 className="text-base font-medium text-black uppercase">
               {t("title")}
@@ -45,7 +46,7 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
           </div>
           {/* Search box */}
           <SearchBox />
-          <nav className="w-full flex flex-col justify-between">
+          <nav className="w-full h-full flex flex-col justify-between">
             {/* Common Links */}
             <ul className="flex flex-col gap-4">
               {COMMON_LINKS.map((navLink, index) => {
@@ -86,7 +87,7 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
                         >
                           <ChevronDown
                             className={clsx(
-                              "size-4",
+                              "size-6",
                               transitionClass,
                               openIndex === index && "rotate-180"
                             )}
@@ -101,7 +102,7 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
               })}
             </ul>
             {/* User Links */}
-            <ul>
+            <ul className="flex flex-col gap-4">
               {USER_LINKS.map((navLink) => (
                 <li key={navLink.label} className={liClass}>
                   <HoverUnderline />
@@ -110,21 +111,39 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
                       href={navLink.href}
                       onClick={onClose}
                       className={clsx(
-                        "size-full flex items-center text-gray-900 text-sm font-medium origin-left group-hover:text-blue-600 group-hover:font-bold",
+                        "size-full flex items-center text-gray-500 text-lg font-medium origin-left group-hover:text-blue-600 group-hover:font-bold",
                         transitionClass
                       )}
                     >
                       {t(`navLabels.${navLink.label}`)}
                     </Link>
-                    <Icon
-                      name={navLink.icon}
-                      className="size-4 ml-2 text-gray-500"
-                    />
+                    <span className="flex items-center gap-2">
+                      <Icon
+                        name={navLink.icon}
+                        className="size-6 text-gray-900"
+                      />
+                      <span className="flex items-center justify-center size-5 rounded-full bg-gray-900 text-white text-xs font-bold">
+                        2
+                      </span>
+                    </span>
                   </span>
                 </li>
               ))}
+              <li className="w-full h-12">
+                <Link
+                  href="/sign-in"
+                  className="size-full flex items-center justify-center rounded bg-gray-900 text-white text-base font-medium"
+                >
+                  {t("navLabels.signIn")}
+                </Link>
+              </li>
             </ul>
           </nav>
+          <div>
+            <SocialIcon name="instagram" className=""/>
+            <SocialIcon name="facebook" className=""/>
+            <SocialIcon name="youtube" className=""/>
+          </div>
         </div>
       </motion.div>
     </motion.div>

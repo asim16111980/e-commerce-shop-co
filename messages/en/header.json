@@ -4,8 +4,9 @@
     "home": "Home",
     "shop": "Shop",
     "product": "Product",
-    "contactus": "Contact Us",
+    "contactUs": "Contact Us",
     "cart": "Cart",
-    "wishlist": "Wishlist"
+    "wishlist": "Wishlist",
+    "signIn":"Sign In"
   }
 }
