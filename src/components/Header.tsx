@@ -25,8 +25,8 @@ const Header = () => {
       {/* <h1 className="flex-1 text-2xl font-bold uppercase">{t("title")}</h1>
       <Search />
       <ShoppingCart />
-      <CircleUser />
-      <LangSwitcher /> */}
+      <CircleUser />*/}
+      <LangSwitcher /> 
     </div>
   );
 };

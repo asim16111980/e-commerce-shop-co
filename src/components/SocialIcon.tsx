@@ -4,18 +4,19 @@ import { JSX } from "react";
 const iconMap: Record<SocialIconProps["name"], JSX.Element> = {
   facebook: (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      className="size-full"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+      <path
+        d="M18 3H15C12.2386 3 10 5.23858 10 8V10H6V14H10V21H14V14H18V10H14V8C14 7.44772 14.4477 7 15 7H18V3Z"
+        stroke="#141718"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   ),
   twitter: (
@@ -26,7 +27,7 @@ const iconMap: Record<SocialIconProps["name"], JSX.Element> = {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
+      strokeWidth="2"
       stroke-linecap="round"
       stroke-linejoin="round"
       className="size-full"
@@ -36,20 +37,23 @@ const iconMap: Record<SocialIconProps["name"], JSX.Element> = {
   ),
   instagram: (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      className="size-full"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+      <rect
+        x="2"
+        y="2"
+        width="20"
+        height="20"
+        rx="4"
+        stroke="#141718"
+        strokeWidth="1.5"
+      />
+      <circle cx="18" cy="6" r="1" fill="#141718" />
+      <circle cx="12" cy="12" r="5" stroke="#141718" strokeWidth="1.5" />
     </svg>
   ),
   linkedin: (
@@ -64,12 +68,27 @@ const iconMap: Record<SocialIconProps["name"], JSX.Element> = {
   ),
   youtube: (
     <svg
-      fill="currentColor"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
-      className="w-full h-full"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M23.498 6.186a2.937 2.937 0 0 0-2.066-2.08C19.813 3.642 12 3.642 12 3.642s-7.813 0-9.432.464a2.937 2.937 0 0 0-2.066 2.08A30.46 30.46 0 0 0 0 12a30.46 30.46 0 0 0 .502 5.814 2.937 2.937 0 0 0 2.066 2.08c1.62.464 9.432.464 9.432.464s7.813 0 9.432-.464a2.937 2.937 0 0 0 2.066-2.08A30.46 30.46 0 0 0 24 12a30.46 30.46 0 0 0-.502-5.814zM9.545 15.568V8.432l6.272 3.568-6.272 3.568z" />
+      <rect
+        x="2"
+        y="3"
+        width="20"
+        height="18"
+        rx="4"
+        stroke="#141718"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M10.4472 8.72361L15.2111 11.1056C15.9482 11.4741 15.9482 12.5259 15.2111 12.8944L10.4472 15.2764C9.78231 15.6088 9 15.1253 9 14.382V9.61803C9 8.87465 9.78231 8.39116 10.4472 8.72361Z"
+        stroke="#141718"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   ),
 };

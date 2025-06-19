@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { ChevronDown, X } from "lucide-react";
 import SearchBox from "./SearchBox";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { COMMON_LINKS, USER_LINKS } from "@/constants/navLinks";
 import { Link } from "@/i18n/navigation";
 import clsx from "clsx";
@@ -14,10 +14,17 @@ import SocialIcon from "./SocialIcon";
 
 const NavMenu = ({ onClose }: { onClose: () => void }) => {
   const t = useTranslations("header");
+  const locale = useLocale();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const liClass =
     "relative w-full h-10 flex items-center justify-between border-b border-b-gray-200 group cursor-pointer";
   const transitionClass = "transition duration-300 ease-in-out";
+  const chevronRotation = (index: number) =>
+    openIndex === index
+      ? locale === "ar"
+        ? "rotate-180"
+        : "-rotate-180"
+      : "rotate-0";
 
   return (
     <motion.div
@@ -29,9 +36,9 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
       className="w-screen h-screen bg-black bg-opacity-35 absolute top-0 start-0 z-50"
     >
       <motion.div
-        initial={{ x: "-100%" }}
+        initial={{ x: locale === "ar" ? "100%" : "-100%" }}
         animate={{ x: 0 }}
-        exit={{ x: "-100%" }}
+        exit={{ x: locale === "ar" ? "100%" : "-100%" }}
         transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
         className="w-11/12 h-full bg-white p-6 flex flex-col"
       >
@@ -58,7 +65,7 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
                         href={navLink.href}
                         onClick={onClose}
                         className={clsx(
-                          "absolute inset-0 size-full flex items-center text-gray-900 text-sm font-medium origin-left group-hover:text-blue-600 group-hover:font-bold",
+                          "absolute inset-0 size-full flex items-center text-gray-900 text-sm font-medium group-hover:text-blue-500 group-hover:font-bold",
                           transitionClass
                         )}
                       >
@@ -76,7 +83,7 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
                           setOpenIndex(openIndex === index ? null : index)
                         }
                         className={clsx(
-                          "absolute inset-0 size-full flex items-center justify-between text-gray-900 text-sm font-medium origin-left group-hover:text-blue-600 group-hover:font-bold",
+                          "absolute inset-0 size-full flex items-center justify-between text-gray-900 text-sm font-medium group-hover:text-blue-500 group-hover:font-bold",
                           transitionClass
                         )}
                       >
@@ -89,7 +96,7 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
                             className={clsx(
                               "size-6",
                               transitionClass,
-                              openIndex === index && "rotate-180"
+                              chevronRotation(index)
                             )}
                           />
                         </span>
@@ -111,7 +118,7 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
                       href={navLink.href}
                       onClick={onClose}
                       className={clsx(
-                        "size-full flex items-center text-gray-500 text-lg font-medium origin-left group-hover:text-blue-600 group-hover:font-bold",
+                        "size-full flex items-center text-gray-500 text-lg font-medium group-hover:text-blue-500 group-hover:font-bold",
                         transitionClass
                       )}
                     >
@@ -139,10 +146,16 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
               </li>
             </ul>
           </nav>
-          <div>
-            <SocialIcon name="instagram" className=""/>
-            <SocialIcon name="facebook" className=""/>
-            <SocialIcon name="youtube" className=""/>
+          <div className="flex items-center gap-2">
+            <Link href="">
+              <SocialIcon name="instagram" className="size-6 text-gray-900" />
+            </Link>
+            <Link href="">
+              <SocialIcon name="facebook" className="size-6 text-gray-900" />
+            </Link>
+            <Link href="">
+              <SocialIcon name="youtube" className="size-6 text-gray-900" />
+            </Link>
           </div>
         </div>
       </motion.div>
