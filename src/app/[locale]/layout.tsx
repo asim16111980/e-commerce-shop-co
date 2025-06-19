@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import TopNav from "@/components/TopNav";
+import PromoBar from "@/components/PromoBar";
 import Header from "@/components/Header";
 
 export async function generateMetadata({
@@ -49,7 +49,7 @@ export default async function LocaleLayout({
     <html lang={locale} dir={direction}>
       <body className="min-h-screen">
         <NextIntlClientProvider>
-          <TopNav />
+          <PromoBar />
           <Header />
           {children} 
         </NextIntlClientProvider>

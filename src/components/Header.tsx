@@ -12,7 +12,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="w-full min-h-16 flex items-center gap-1 bg-white text-black shadow-md">
+    <div className="w-full h-16 flex items-center bg-white text-black px-8 py-4">
       <button
         type="button"
         className="p-2 md:hidden"
@@ -22,8 +22,8 @@ const Header = () => {
       </button>
       <AnimatePresence>
       {isOpen && <FlyMenu onClose={() => setIsOpen(false)} />}</AnimatePresence>
-      {/* <h1 className="flex-1 text-2xl font-bold uppercase">{t("title")}</h1>
-      <Search />
+       <h1 className="flex-1 text-2xl font-bold uppercase">{t("title")}</h1>
+      {/*<Search />
       <ShoppingCart />
       <CircleUser />*/}
       <LangSwitcher /> 
