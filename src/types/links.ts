@@ -2,7 +2,7 @@ import { IconName } from "@/types/icons";
 
 export type CommonLinks = {
   label: string;
-  href?: string;
+  href: string;
   nested?: {
     label: string;
     href: string;

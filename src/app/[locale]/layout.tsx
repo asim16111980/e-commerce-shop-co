@@ -49,7 +49,6 @@ export default async function LocaleLayout({
     <html lang={locale} dir={direction}>
       <body className="min-h-screen">
         <NextIntlClientProvider>
-          <PromoBar />
           <Header />
           {children} 
         </NextIntlClientProvider>

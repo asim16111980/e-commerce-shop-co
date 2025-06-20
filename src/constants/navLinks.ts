@@ -7,6 +7,7 @@ const COMMON_LINKS: CommonLinks[] = [
   },
   {
     label: "shop",
+    href: "/shop",
     nested: [
       { label: "category 1", href: "/shop/category1" },
       { label: "category 2", href: "/shop/category2" },
@@ -14,6 +15,7 @@ const COMMON_LINKS: CommonLinks[] = [
   },
   {
     label: "product",
+    href: "/product",
     nested: [
       { label: "product 1", href: "/product/1" },
       { label: "product 2", href: "/product/2" },

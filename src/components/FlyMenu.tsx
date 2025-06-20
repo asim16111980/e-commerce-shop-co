@@ -53,60 +53,49 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
           </div>
           {/* Search box */}
           <SearchBox />
-          <nav className="w-full h-full flex flex-col justify-between">
+          <div className="w-full h-full flex flex-col justify-between">
             {/* Common Links */}
             <ul className="flex flex-col gap-4">
-              {COMMON_LINKS.map((navLink, index) => {
-                if ("href" in navLink && navLink.href) {
-                  return (
-                    <li key={navLink.label} className={liClass}>
-                      <HoverUnderline />
-                      <Link
-                        href={navLink.href}
-                        onClick={onClose}
-                        className={clsx(
-                          "absolute inset-0 size-full flex items-center text-gray-900 text-sm font-medium group-hover:text-blue-500 group-hover:font-bold",
-                          transitionClass
-                        )}
-                      >
-                        {t(`navLabels.${navLink.label}`)}
-                      </Link>
-                    </li>
-                  );
-                } else if ("nested" in navLink && navLink.nested) {
-                  return (
-                    <li key={navLink.label} className={liClass}>
-                      <HoverUnderline />
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setOpenIndex(openIndex === index ? null : index)
-                        }
-                        className={clsx(
-                          "absolute inset-0 size-full flex items-center justify-between text-gray-900 text-sm font-medium group-hover:text-blue-500 group-hover:font-bold",
-                          transitionClass
-                        )}
-                      >
-                        <span>{t(`navLabels.${navLink.label}`)}</span>
-                        <span
-                          aria-expanded={openIndex === index}
-                          className="size-6 flex items-center justify-center"
-                        >
-                          <ChevronDown
-                            className={clsx(
-                              "size-6",
-                              transitionClass,
-                              chevronRotation(index)
-                            )}
-                          />
-                        </span>
-                      </button>
-                    </li>
-                  );
-                } else {
-                  return null;
-                }
-              })}
+              {COMMON_LINKS.map((navLink, index) => (
+                <li key={navLink.label} className={liClass}>
+                  <HoverUnderline />
+                  {"nested" in navLink && navLink.nested ? (
+                    <button
+                      type="button"
+                      aria-expanded={openIndex === index}
+                      onClick={() =>
+                        setOpenIndex(openIndex === index ? null : index)
+                      }
+                      className={clsx(
+                        "absolute inset-0 size-full flex items-center justify-between text-gray-900 text-sm font-medium group-hover:text-blue-500 group-hover:font-bold",
+                        transitionClass
+                      )}
+                    >
+                      <span className="size-6 flex items-center justify-center">
+                        <ChevronDown
+                          aria-hidden="true"
+                          className={clsx(
+                            "size-6",
+                            transitionClass,
+                            chevronRotation(index)
+                          )}
+                        />
+                      </span>
+                    </button>
+                  ) : (
+                    <Link
+                      href={navLink.href}
+                      onClick={onClose}
+                      className={clsx(
+                        "absolute inset-0 size-full flex items-center text-gray-900 text-sm font-medium group-hover:text-blue-500 group-hover:font-bold",
+                        transitionClass
+                      )}
+                    >
+                      {t(`navLabels.${navLink.label}`)}
+                    </Link>
+                  )}
+                </li>
+              ))}
             </ul>
             {/* User Links */}
             <ul className="flex flex-col gap-4">
@@ -145,15 +134,15 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
                 </Link>
               </li>
             </ul>
-          </nav>
+          </div>
           <div className="flex items-center gap-2">
-            <Link href="">
+            <Link href="#">
               <SocialIcon name="instagram" className="size-6 text-gray-900" />
             </Link>
-            <Link href="">
+            <Link href="#">
               <SocialIcon name="facebook" className="size-6 text-gray-900" />
             </Link>
-            <Link href="">
+            <Link href="#">
               <SocialIcon name="youtube" className="size-6 text-gray-900" />
             </Link>
           </div>

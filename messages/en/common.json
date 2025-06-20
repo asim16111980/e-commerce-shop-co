@@ -1,3 +1,6 @@
 {
-  "promoBar": "30% off storewide — Limited time!"
+  "promoBar": {
+    "text": "30% off storewide — Limited time!",
+    "link": "Shop Now"
+  }
 }
