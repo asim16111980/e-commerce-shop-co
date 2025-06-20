@@ -5,6 +5,6 @@ export interface TranslationMessages {
 export type Messages = {
   common: TranslationMessages;
   header: TranslationMessages;
-  homepage: TranslationMessages;
+  home: TranslationMessages;
   metadata: TranslationMessages;
 };

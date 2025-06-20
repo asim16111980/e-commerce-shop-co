@@ -31,12 +31,23 @@ const Header = () => {
         <h1 className="flex-1 text-2xl text-black font-bold uppercase">
           {t("title")}
         </h1>
-        <ul>
-          {/* {COMMON_LINKS.map((navLink) => (
-            <li>
-              <Link href={navLink.href}></Link>
+        <ul className="flex items-center gap-10">
+          {COMMON_LINKS.map((navLink) => (
+            <li key={navLink.label}>
+              <Link href={navLink.href} className="text-sm font-medium text-gray-600"></Link>
             </li>
-          ))} */}
+          ))}
+        </ul>
+        <ul className="flex items-center gap-4 ms-auto">
+          <li className="size-6">
+            <Search className="text-gray-600" />
+          </li>
+          <li className="size-6">
+            <ShoppingCart className="text-gray-600" />
+          </li>
+          <li className="size-6">
+            <CircleUser className="text-gray-600" />
+          </li>
         </ul>
         {/*<Search />
       <ShoppingCart />
