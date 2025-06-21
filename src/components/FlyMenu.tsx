@@ -135,17 +135,23 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
               </li>
             </ul>
           </div>
-          <div className="flex items-center gap-2">
-            <Link href="#">
-              <SocialIcon name="instagram" className="size-6 text-gray-900" />
-            </Link>
-            <Link href="#">
-              <SocialIcon name="facebook" className="size-6 text-gray-900" />
-            </Link>
-            <Link href="#">
-              <SocialIcon name="youtube" className="size-6 text-gray-900" />
-            </Link>
-          </div>
+          <ul className="flex items-center gap-6">
+            <li>
+              <Link href="#" aria-label="Instagram">
+                <SocialIcon name="instagram" className="size-6 text-gray-900" />
+              </Link>
+            </li>
+            <li>
+              <Link href="#" aria-label="Facebook">
+                <SocialIcon name="facebook" className="size-6 text-gray-900" />
+              </Link>
+            </li>
+            <li>
+              <Link href="#" aria-label="Youtube">
+                <SocialIcon name="youtube" className="size-6 text-gray-900" />
+              </Link>
+            </li>
+          </ul>
         </div>
       </motion.div>
     </motion.div>

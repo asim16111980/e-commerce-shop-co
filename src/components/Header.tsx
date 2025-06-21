@@ -15,9 +15,9 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="w-full h-16 flex items-center bg-white px-8 sm:px-40 py-4">
+    <header className="flex flex-col">
       <PromoBar />
-      <nav>
+      <div className="w-full h-16 flex items-center justify-between xl:px-40 md:px-32 sm:px-20 px-8 py-4">
         <button
           type="button"
           className="p-2 sm:hidden"
@@ -31,14 +31,15 @@ const Header = () => {
         <h1 className="flex-1 text-2xl text-black font-bold uppercase">
           {t("title")}
         </h1>
+        <nav className="hidden sm:block">
         <ul className="flex items-center gap-10">
           {COMMON_LINKS.map((navLink) => (
             <li key={navLink.label}>
-              <Link href={navLink.href} className="text-sm font-medium text-gray-600"></Link>
+              <Link href={navLink.href} className="text-sm font-medium text-gray-600">{t(`navLabels.${navLink.label}`)}</Link>
             </li>
           ))}
         </ul>
-        <ul className="flex items-center gap-4 ms-auto">
+        <ul className="flex items-center gap-4">
           <li className="size-6">
             <Search className="text-gray-600" />
           </li>
@@ -48,13 +49,10 @@ const Header = () => {
           <li className="size-6">
             <CircleUser className="text-gray-600" />
           </li>
-        </ul>
-        {/*<Search />
-      <ShoppingCart />
-      <CircleUser />*/}
+        </ul>  </nav>
         <LangSwitcher />
-      </nav>
-    </div>
+      </div>
+    </header>
   );
 };
 
