@@ -25,7 +25,7 @@ const LangSwitcher = () => {
   };
 
   return (
-    <div className="w-fit relative ms-auto me-2">
+    <div className="w-fit relative">
       <Menu as="div" className="h-16 flex justify-center items-center relative">
         {({ open }) => (
           <>
