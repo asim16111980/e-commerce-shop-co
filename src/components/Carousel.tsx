@@ -1,24 +1,25 @@
+"use client";
+
 import { SLIDERS_IMAGES } from "@/constants/slidersImages";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { AnimatePresence, useIsPresent } from "motion/react";
-import Image from "next/image";
+import { AnimatePresence } from "motion/react";
+import Slide from "./Slide";
+import { useState } from "react";
 
 const Carousel = () => {
-  const isPresent=useIsPresent()
+const [navDirection, setNavDirection] = useState<"left" | "right">("left");
   return (
     <div className="relative w-full">
-      <div className="size-full flex">
-        {SLIDERS_IMAGES.map((image, index) => (
-          <AnimatePresence>
-            <Image
-              key={index}
+      <div className="w-full h-[536px] flex overflow-hidden">
+        <AnimatePresence custom={navDirection }>
+          {SLIDERS_IMAGES.map((image) => (
+            <Slide
+              key={image}
               src={`/images/carousel/${image}`}
-              alt="Slider 1"
-              width={1120}
-              height={536}
+              alt={image}
             />
-          </AnimatePresence>
-        ))}
+          ))}
+        </AnimatePresence>
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#34383900] from-83% to-[#34383965] to-100%">
         <button
