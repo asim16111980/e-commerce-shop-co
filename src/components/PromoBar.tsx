@@ -2,13 +2,14 @@
 
 import { Link } from "@/i18n/navigation";
 import clsx from "clsx";
-import { MoveRight, Ticket, X } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { MoveLeft, MoveRight, Ticket, X } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 
 const PromoBar = () => {
   const t = useTranslations("common");
   const [isOpen, setIsOpen] = useState<boolean>(true);
+  const locale = useLocale();
 
   return (
     <div
@@ -27,13 +28,13 @@ const PromoBar = () => {
           </p>
           <span className="hidden sm:block ">
             <Link
-              href=""
+              href="#"
               className="flex items-center text-blue-500 gap-0.5 border-b border-blue-500"
             >
               <span className="capitalize text-sm font-medium">
                 {t("promoBar.link")}
               </span>
-            <MoveRight />
+              {locale === "ar" ? <MoveLeft /> : <MoveRight />}
             </Link>
           </span>
         </div>

@@ -2,7 +2,7 @@
 
 import { SLIDERS_IMAGES } from "@/constants/slidersImages";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { AnimatePresence, wrap } from "motion/react";
+import { AnimatePresence, motion, wrap } from "motion/react";
 import Slide from "./Slide";
 import { useEffect, useRef, useState } from "react";
 
@@ -13,13 +13,10 @@ const Carousel = () => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const setSlide = (newDirection: 1 | -1) => {
-    console.log("t");
-    const nextSlide = wrap(
-      1,
-      SLIDERS_IMAGES.length,
-      currentSlide + newDirection
-    );
-    setCurrentSlide(nextSlide);
+    setCurrentSlide((prev) => {
+      const nextSlide = wrap(0, SLIDERS_IMAGES.length, prev + newDirection);
+      return nextSlide;
+    });
     setNavDirection(newDirection);
   };
 
@@ -27,8 +24,6 @@ const Carousel = () => {
     stopAutoPlay();
     intervalRef.current = setInterval(() => {
       setSlide(1);
-  
-      
     }, 3000);
   };
 
@@ -58,25 +53,36 @@ const Carousel = () => {
         <button
           type="button"
           aria-label="Previous"
-          onClick={() => setSlide(-1)}
-          // onMouseEnter={() => stopAutoPlay()}
-          // onMouseLeave={() => startAutoPlay()}
-          className="size-12 flex items-center justify-center rounded-full shadow-sm bg-white text-gray-500 absolute left-8 top-1/2 transform -translate-y-1/2"
+          onClick={() => setSlide(1)}
+          onMouseEnter={() => stopAutoPlay()}
+          onMouseLeave={() => startAutoPlay()}
+          className="size-12 flex items-center justify-center rounded-full shadow-sm bg-white text-gray-600 absolute left-8 top-1/2 transform -translate-y-1/2 hover:bg-blue-500 hover:text-white transition duration-300"
         >
           <ArrowLeft className="size-8" />
         </button>
         <button
           type="button"
           aria-label="Next"
-          onClick={() => setSlide(1)}
-          className="size-12 flex items-center justify-center rounded-full shadow-sm bg-white text-gray-500 absolute right-8 top-1/2 transform -translate-y-1/2"
+          onClick={() => setSlide(-1)}
+          onMouseEnter={() => stopAutoPlay()}
+          onMouseLeave={() => startAutoPlay()}
+          className="size-12 flex items-center justify-center rounded-full shadow-sm bg-white text-gray-600 absolute right-8 top-1/2 transform -translate-y-1/2 hover:bg-blue-500 hover:text-white transition duration-300"
         >
           <ArrowRight className="size-8" />
         </button>
-        <div className="absolute w-20 h-2 flex items-center gap-4 bottom-10 transform -translate-x-1/2 left-1/2">
-          <span className="w-8 h-full rounded-full bg-gray-50"></span>
-          <span className="w-2 h-full rounded-full bg-gray-50"></span>
-          <span className="w-2 h-full rounded-full bg-gray-50"></span>
+        <div className="absolute w-auto h-2 flex items-center gap-4 bottom-10 transform -translate-x-1/2 left-1/2">
+          {SLIDERS_IMAGES.map((_, index) => (
+            <motion.span
+              key={index}
+              className="h-full rounded-full bg-gray-50 transition duration-1000"
+              initial={{ width: "0.5rem" }}
+              animate={{ width: currentSlide === index ? "2rem" : "0.5rem" }}
+              transition={{
+                duration: 0.5,
+                type: "spring",
+              }}
+            ></motion.span>
+          ))}
         </div>
       </div>
     </div>

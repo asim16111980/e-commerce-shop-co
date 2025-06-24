@@ -48,7 +48,7 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
               {t("title")}
             </h1>
             <button type="button" onClick={onClose} aria-label="Close menu">
-              <X className="text-gray-500" />
+              <X className="text-gray-600" />
             </button>
           </div>
           {/* Search box */}
@@ -107,7 +107,7 @@ const NavMenu = ({ onClose }: { onClose: () => void }) => {
                       href={navLink.href}
                       onClick={onClose}
                       className={clsx(
-                        "size-full flex items-center text-gray-500 text-lg font-medium group-hover:text-blue-500 group-hover:font-bold",
+                        "size-full flex items-center text-gray-600 text-lg font-medium group-hover:text-blue-500 group-hover:font-bold",
                         transitionClass
                       )}
                     >

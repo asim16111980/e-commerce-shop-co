@@ -8,11 +8,13 @@ import FlyMenu from "./FlyMenu";
 import { useState } from "react";
 import PromoBar from "./PromoBar";
 import { COMMON_LINKS } from "@/constants/navLinks";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
+import clsx from "clsx";
 
 const Header = () => {
   const t = useTranslations("header");
   const [isOpen, setIsOpen] = useState(false);
+    const pathname =usePathname();
 
   return (
     <header className="flex flex-col">
@@ -37,7 +39,7 @@ const Header = () => {
               <li key={navLink.label}>
                 <Link
                   href={navLink.href}
-                  className="text-sm font-medium text-gray-600"
+                  className={clsx("text-sm font-medium",pathname===navLink.href? "text-gray-900" : "text-gray-600")}
                 >
                   {t(`navLabels.${navLink.label}`)}
                 </Link>
