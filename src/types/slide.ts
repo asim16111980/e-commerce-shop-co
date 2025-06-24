@@ -1,5 +1,5 @@
 export type SlideProps = {
-    key: string;
+    key: number;
     src: string;
     alt: string;
 }
