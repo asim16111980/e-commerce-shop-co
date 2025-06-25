@@ -56,7 +56,7 @@ const Carousel = () => {
           onClick={() => setSlide(1)}
           onMouseEnter={() => stopAutoPlay()}
           onMouseLeave={() => startAutoPlay()}
-          className="size-12 flex items-center justify-center rounded-full shadow-sm bg-white text-gray-600 absolute left-8 top-1/2 transform -translate-y-1/2 hover:bg-blue-500 hover:text-white transition duration-300"
+          className="hidden sm:flex size-12 items-center justify-center rounded-full shadow-sm bg-white text-gray-600 absolute left-8 top-1/2 transform -translate-y-1/2 hover:bg-gray-600 hover:text-white transition duration-300"
         >
           <ArrowLeft className="size-8" />
         </button>
@@ -66,7 +66,7 @@ const Carousel = () => {
           onClick={() => setSlide(-1)}
           onMouseEnter={() => stopAutoPlay()}
           onMouseLeave={() => startAutoPlay()}
-          className="size-12 flex items-center justify-center rounded-full shadow-sm bg-white text-gray-600 absolute right-8 top-1/2 transform -translate-y-1/2 hover:bg-blue-500 hover:text-white transition duration-300"
+          className="hidden sm:flex size-12 items-center justify-center rounded-full shadow-sm bg-white text-gray-600 absolute right-8 top-1/2 transform -translate-y-1/2 hover:bg-gray-600 hover:text-white transition duration-300"
         >
           <ArrowRight className="size-8" />
         </button>
