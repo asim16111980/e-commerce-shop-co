@@ -7,7 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 
 const PromoBar = () => {
-  const t = useTranslations("common");
+  const tCommon = useTranslations("common");
   const [isOpen, setIsOpen] = useState<boolean>(true);
   const locale = useLocale();
 
@@ -23,7 +23,7 @@ const PromoBar = () => {
           <p className="flex items-center text-center gap-2 md:gap-3">
             <Ticket className="text-gray-900" />
             <span className="text-xs sm:text-sm font-semibold text-gray-700">
-              {t("promoBar.text")}
+              {tCommon("promoBar.text")}
             </span>
           </p>
           <span className="hidden sm:block ">
@@ -32,7 +32,7 @@ const PromoBar = () => {
               className="flex items-center text-blue-500 gap-0.5 border-b border-blue-500"
             >
               <span className="capitalize text-sm font-medium">
-                {t("promoBar.link")}
+                {tCommon("shopLink")}
               </span>
               {locale === "ar" ? <MoveLeft /> : <MoveRight />}
             </Link>

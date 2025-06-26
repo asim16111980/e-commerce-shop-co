@@ -40,7 +40,7 @@ const Carousel = () => {
 
   return (
     <div className="relative w-full">
-      <div className="relative w-full h-[536px] flex overflow-hidden">
+      <div className="relative w-full h-80 sm:h-[536px] flex overflow-hidden">
         <AnimatePresence custom={navDirection} mode="sync" initial={false}>
           <Slide
             key={currentSlide}

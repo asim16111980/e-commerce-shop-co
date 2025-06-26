@@ -1,7 +1,8 @@
 {
-  "appTitle":"Infinity",
+  "appTitle": "Infinity",
+  "shopLink": "Shop Now",
+
   "promoBar": {
-    "text": "30% off storewide — Limited time!",
-    "link": "Shop Now"
+    "text": "30% off storewide — Limited time!"
   }
 }
