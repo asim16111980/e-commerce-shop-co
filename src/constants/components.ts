@@ -1,1 +1,5 @@
-export const CARDS = ["c1", "c2", "c3"] as const;
+export const CARDS = [
+  { title: "c1", image: "Living-room.png" },
+  { title: "c2", image: "Bedroom.png" },
+  { title: "c3", image: "Kitchen.png" },
+] as const;

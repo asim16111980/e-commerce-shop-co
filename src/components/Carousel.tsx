@@ -46,6 +46,7 @@ const Carousel = () => {
             key={currentSlide}
             src={`/images/carousel/${currentImage}`}
             alt={currentImage}
+            isFirst={currentSlide === 0}
           />
         </AnimatePresence>
       </div>

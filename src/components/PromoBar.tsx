@@ -29,7 +29,7 @@ const PromoBar = () => {
           <span className="hidden sm:block ">
             <Link
               href="#"
-              className="flex items-center text-blue-500 gap-0.5 border-b border-blue-500"
+              className="flex items-center text-blue-500 gap-0.5 border-b border-b-blue-500"
             >
               <span className="capitalize text-sm font-medium">
                 {tCommon("shopLink")}

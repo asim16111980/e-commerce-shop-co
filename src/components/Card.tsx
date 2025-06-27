@@ -10,26 +10,22 @@ const Card = ({ title, image,classes }: cardProps) => {
   const tCommon = useTranslations("common");
   const locale = useLocale();
   return (
-    <div className={clsx("",classes)}>
-      <div>
-        <h3>{tComponent(`card.${title}`)}</h3>
-        <p>
-          <span className="hidden sm:block ">
+    <div className={clsx("relative flex flex-wrap items-end bg-gray-100 text-gray-900 p-8",classes)}>
+      <div className="flex flex-col gap-2 sm:gap-3">
+        <h3 className="capitalize sm:text-4xl text-3xl font-medium">{tComponent(`card.${title}`)}</h3>
+          <span className="w-fit">
             <Link
               href="#"
-              className="flex items-center text-blue-500 gap-0.5 border-b border-blue-500"
+              className="flex items-center gap-1 border-b border-b-gray-900"
             >
-              <span className="capitalize text-sm font-medium">
+              <span className="capitalize sm:text-base text-sm font-medium">
                 {tCommon("shopLink")}
               </span>
               {locale === "ar" ? <MoveLeft /> : <MoveRight />}
             </Link>
           </span>
-        </p>
           </div>
-          {/* <Image src={image} alt={image} width={10 } height={10 } />
-           */}
-          <Image src={image} alt={image}/>
+          <Image src={`/images/cards/${image}`} alt={image} fill className="mix-blend-multiply"/>
     </div>
   );
 };

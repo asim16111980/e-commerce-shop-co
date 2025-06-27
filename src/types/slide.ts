@@ -1,5 +1,6 @@
 export type SlideProps = {
-    key: number;
-    src: string;
-    alt: string;
-}
+  key: number;
+  src: string;
+  alt: string;
+  isFirst: boolean;
+};

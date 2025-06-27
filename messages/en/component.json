@@ -1,7 +1,7 @@
 {
   "card": {
-    "c1Title": "Living Room",
-    "c2Title": "Bedroom",
-    "c3Title": "Kitchen"
+    "c1": "Living Room",
+    "c2": "Bedroom",
+    "c3": "Kitchen"
   }
 }

@@ -2,7 +2,7 @@ import { SlideProps } from "@/types/slide";
 import { motion, usePresenceData } from "motion/react";
 import Image from "next/image";
 
-const Slide = ({ src, alt }: SlideProps) => {
+const Slide = ({ src, alt,isFirst }: SlideProps) => {
   const navDirection = usePresenceData();
   return (
     <motion.div
@@ -19,7 +19,7 @@ const Slide = ({ src, alt }: SlideProps) => {
         transition: { duration: 0.5, ease: "easeInOut" },
       }}
     >
-      <Image src={src} alt={alt} fill />
+      <Image src={src} alt={alt} fill priority={isFirst} />
     </motion.div>
   );
 };
