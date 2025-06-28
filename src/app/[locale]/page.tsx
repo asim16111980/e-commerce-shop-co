@@ -13,21 +13,21 @@ export default async function Home({
   const { locale } = await params;
   const tHome = await getTranslations("home");
   const tCommon = await getTranslations("common");
-  const sectionPadding = "xl:px-40 md:px-14 px-8 pb-10";
+  const sectionPadding = "px-[clamp(2rem,8vw,10rem)]";
 
   setRequestLocale(locale);
   return (
     <div className="w-full">
       {/* Slider Section */}
-      <section className={clsx("flex flex-col gap-8", sectionPadding)}>
+      <section className={clsx("flex flex-col gap-8 pb-10", sectionPadding)}>
         <Carousel />
-        <section className="flex flex-col sm:flex-row gap-6">
+        <section className="flex flex-col sm:flex-row sm:items-center gap-6">
           <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-medium text-gray-900 sm:text-gray-600">
             {tHome("sliderSection.title")}
           </h2>
           <p className="text-sm sm:text-base">
-            <span className="font-semibold sm:font-normal text-gray-700">
-              {tCommon("appTitle")}{" "}
+            <span className="font-semibold sm:font-normal text-gray-700 me-2">
+              {tCommon("appTitle")}
             </span>
             <span className="text-gray-600">
               {tHome("sliderSection.subtitle")}
@@ -38,7 +38,7 @@ export default async function Home({
       {/* Banner Grid Section */}
       <section
         className={clsx(
-          "w-full h-auto sm:min-h-[500px] sm:max-h-max grid gap-4 sm:grid-cols-2 sm:grid-rows-2 sm:gap-6 grid-cols-1 grid-rows-4",
+          "w-full h-[770px] sm:h-[clamp(450px,5vw,660px)] grid gap-4 sm:grid-cols-2 sm:grid-rows-2 sm:gap-6 grid-cols-1 grid-rows-4",
           sectionPadding
         )}
       >
@@ -46,7 +46,7 @@ export default async function Home({
           const baseClass =
             index === 0
               ? `row-span-2 sm:h-full sm:col-span-1`
-              : `sm:col-span-1`;
+              : `sm:col-span-1 items-end`;
           return (
             <Card
               key={index}

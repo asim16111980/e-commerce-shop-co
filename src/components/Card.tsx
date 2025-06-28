@@ -10,9 +10,9 @@ const Card = ({ title, image,classes }: cardProps) => {
   const tCommon = useTranslations("common");
   const locale = useLocale();
   return (
-    <div className={clsx("relative flex flex-wrap items-end bg-gray-100 text-gray-900 p-8",classes)}>
-      <div className="flex flex-col gap-2 sm:gap-3">
-        <h3 className="capitalize sm:text-4xl text-3xl font-medium">{tComponent(`card.${title}`)}</h3>
+    <div className={clsx("relative flex flex-wrap bg-gray-100 text-gray-900 p-8",classes)}>
+      <div className="w-full h-auto flex flex-col gap-2 sm:gap-3">
+        <h3 className="capitalize md:text-3xl text-2xl font-medium">{tComponent(`card.${title}`)}</h3>
           <span className="w-fit">
             <Link
               href="#"
