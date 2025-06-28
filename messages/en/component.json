@@ -3,5 +3,11 @@
     "c1": "Living Room",
     "c2": "Bedroom",
     "c3": "Kitchen"
+  },
+  "sectionHeader":{
+    "productCarousel":{
+      "title":"New Arrivals",
+      "link":"More Products"
+    }
   }
 }

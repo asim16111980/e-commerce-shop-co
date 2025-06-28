@@ -4,6 +4,7 @@ import Carousel from "@/components/Carousel";
 import { CARDS } from "@/constants/components";
 import Card from "@/components/Card";
 import clsx from "clsx";
+import SectionHeader from "@/components/SectionHeader";
 
 export default async function Home({
   params,
@@ -13,6 +14,7 @@ export default async function Home({
   const { locale } = await params;
   const tHome = await getTranslations("home");
   const tCommon = await getTranslations("common");
+  const tComponent = await getTranslations("component");
   const sectionPadding = "px-[clamp(2rem,8vw,10rem)]";
 
   setRequestLocale(locale);
@@ -56,6 +58,13 @@ export default async function Home({
             />
           );
         })}
+      </section>
+      {/* Product Carousel Section */}
+      <section className="w-full flex flex-col gap-10 sm:gap-12 ps-8 py-8 sm:ps-40 sm:pt-12">
+        <SectionHeader
+          title={tComponent("sectionHeader.productCarousel.title")}
+          link={tComponent("sectionHeader.productCarousel.link")}
+        />
       </section>
     </div>
   );
