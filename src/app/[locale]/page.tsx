@@ -60,11 +60,14 @@ export default async function Home({
         })}
       </section>
       {/* Product Carousel Section */}
-      <section className="w-full flex flex-col gap-10 sm:gap-12 ps-8 py-8 sm:ps-40 sm:pt-12">
+      <section className={clsx("w-full flex flex-col gap-10 sm:gap-12 py-8 sm:pt-12", sectionPadding)}>
         <SectionHeader
           title={tComponent("sectionHeader.productCarousel.title")}
           link={tComponent("sectionHeader.productCarousel.link")}
         />
+        <div>
+
+        </div>
       </section>
     </div>
   );
