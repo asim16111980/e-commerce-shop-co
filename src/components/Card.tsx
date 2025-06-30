@@ -1,11 +1,11 @@
 import { Link } from "@/i18n/navigation";
-import { CardProps } from "@/types/components";
+import { BannerCardProps } from "@/types/components";
 import clsx from "clsx";
 import { MoveLeft, MoveRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 
-const Card = ({ title, image, classes }: CardProps) => {
+const Card = ({ title, image, classes }: BannerCardProps) => {
   const tComponent = useTranslations("component");
   const tCommon = useTranslations("common");
   const locale = useLocale();

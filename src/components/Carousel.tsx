@@ -1,6 +1,6 @@
 "use client";
 
-import { SLIDERS_IMAGES } from "@/constants/slidersImages";
+import { HERO_CAROUSEL } from "@/constants/components";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { AnimatePresence, motion, wrap } from "motion/react";
 import Slide from "./Slide";
@@ -9,12 +9,12 @@ import { useEffect, useRef, useState } from "react";
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [navDirection, setNavDirection] = useState<1 | -1>(1);
-  const currentImage = SLIDERS_IMAGES[currentSlide];
+  const currentImage = HERO_CAROUSEL[currentSlide];
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const setSlide = (newDirection: 1 | -1) => {
     setCurrentSlide((prev) => {
-      const nextSlide = wrap(0, SLIDERS_IMAGES.length, prev + newDirection);
+      const nextSlide = wrap(0, HERO_CAROUSEL.length, prev + newDirection);
       return nextSlide;
     });
     setNavDirection(newDirection);
@@ -72,7 +72,7 @@ const Carousel = () => {
           <ArrowRight className="size-8" />
         </button>
         <div className="absolute w-auto h-2 flex items-center gap-4 bottom-10 transform -translate-x-1/2 left-1/2">
-          {SLIDERS_IMAGES.map((_, index) => (
+          {HERO_CAROUSEL.map((_, index) => (
             <motion.span
               key={index}
               className="h-full rounded-full bg-gray-50 transition duration-1000"

@@ -5,6 +5,7 @@ import { CARDS } from "@/constants/components";
 import Card from "@/components/Card";
 import clsx from "clsx";
 import SectionHeader from "@/components/SectionHeader";
+import ProductCard from "@/components/ProductCard";
 
 export default async function Home({
   params,
@@ -65,6 +66,7 @@ export default async function Home({
           title={tComponent("sectionHeader.productCarousel.title")}
           link={tComponent("sectionHeader.productCarousel.link")}
         />
+        <ProductCard discount={0} hasWishlistIcon={false} image={""} rating={0} title={""} netPrice={0} price={0} />
         <div>
 
         </div>
