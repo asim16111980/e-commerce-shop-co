@@ -66,7 +66,7 @@ export default async function Home({
           title={tComponent("sectionHeader.productCarousel.title")}
           link={tComponent("sectionHeader.productCarousel.link")}
         />
-        <ProductCard discount={0} hasWishlistIcon={false} image={""} rating={0} title={""} netPrice={0} price={0} />
+        <ProductCard discount={50} hasWishlistIcon={true} image={""} rating={5} title={"Loveseat Sofa"} netPrice={199} price={400} />
         <div>
 
         </div>
