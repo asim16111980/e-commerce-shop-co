@@ -19,8 +19,14 @@ const ProductCard = ({
   const [isWished, setIsWished] = useState<boolean>(false);
 
   return (
-    <div className="w-[clamp(230px,5vw,260px)] h-[clamp(390px,5vw,430px)] flex flex-col gap-4">
-      <div className="relative flex-1 flex flex-col p-4 bg-gray-100 group">
+    <div className="group w-[clamp(230px,5vw,260px)] h-[clamp(390px,5vw,430px)] flex flex-col gap-4 cursor-pointer">
+      <div className="relative flex-1 flex flex-col p-4 bg-gray-100">
+        <Image
+          src="/images/products/product-1.png"
+          alt=""
+          fill
+          className="mix-blend-multiply"
+        />
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
             <span className="px-3.5 py-1 bg-white text-gray-900 text-base font-bold rounded">
@@ -34,7 +40,7 @@ const ProductCard = ({
             <button
               type="button"
               onClick={() => setIsWished((val) => !val)}
-              className="flex items-center justify-center size-8 p-1.5 rounded-full bg-white text-gray-600 filter drop-shadow-lg cursor-pointer"
+              className="inline-flex items-center justify-center size-8 p-1.5 rounded-full bg-white text-gray-600 filter drop-shadow-lg cursor-pointer"
             >
               <Heart
                 className={clsx(isWished ? "fill-green-700" : "fill-white")}
@@ -42,12 +48,6 @@ const ProductCard = ({
             </button>
           )}
         </div>
-        <Image
-          src="/images/products/product-1.png"
-          alt=""
-          fill
-          className="mix-blend-multiply"
-        />
         <button
           type="button"
           className="absolute start-4 end-4 bottom-4 invisible opacity-0 group-hover:visible group-hover:opacity-100 h-[clamp(40px,5vw,46px)] bg-gray-900 text-gray-50 rounded-lg text-base font-medium transition duration-300"

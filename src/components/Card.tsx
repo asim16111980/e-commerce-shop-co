@@ -10,7 +10,7 @@ const Card = ({ title, image, classes }: BannerCardProps) => {
   const tCommon = useTranslations("common");
   const locale = useLocale();
   return (
-    <div
+    <section
       className={clsx(
         "relative flex flex-wrap bg-gray-100 text-gray-900 p-8",
         classes
@@ -20,25 +20,28 @@ const Card = ({ title, image, classes }: BannerCardProps) => {
         <h3 className="capitalize md:text-3xl text-2xl font-medium">
           {tComponent(`card.${title}`)}
         </h3>
-        <span className="w-fit">
-          <Link
-            href="#"
-            className="flex items-center gap-1 border-b border-b-gray-900"
-          >
-            <span className="capitalize sm:text-base text-sm font-medium">
-              {tCommon("shopLink")}
-            </span>
-            {locale === "ar" ? <MoveLeft /> : <MoveRight />}
-          </Link>
-        </span>
+        <Link
+          href="#"
+          className="group w-fit flex items-center gap-1 border-b border-b-gray-900"
+        >
+          <span className="capitalize sm:text-base text-sm font-medium">
+            {tCommon("shopLink")}
+          </span>
+          {locale === "ar" ? (
+            <MoveLeft className="size-4 group-hover:-translate-x-0.5 transition-transform" />
+          ) : (
+            <MoveRight className="size-4 group-hover:-translate-x-0.5 transition-transform" />
+          )}
+        </Link>
       </div>
       <Image
         src={`/images/cards/${image}`}
         alt={image}
         fill
-        className="mix-blend-multiply"
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="mix-blend-multiply pointer-events-none select-none"
       />
-    </div>
+    </section>
   );
 };
 
